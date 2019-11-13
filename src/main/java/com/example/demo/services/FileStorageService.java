@@ -35,8 +35,7 @@ public class FileStorageService {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
         try {
-            if (fileName.contains(".."))
-                return null;
+            if (fileName.contains("..")) return null;
 
             FileStorage fileStorage = FileStorage
                     .builder()

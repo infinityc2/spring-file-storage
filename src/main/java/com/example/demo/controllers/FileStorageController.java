@@ -49,7 +49,11 @@ public class FileStorageController {
     @PostMapping("/upload")
     public Map<String, Object> store(@RequestParam("file") MultipartFile file) {
         FileStorage fileStorage = fileStorageService.store(file);
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/download/").path(fileStorage.getId().toString()).toUriString();
+        String fileDownloadUri = ServletUriComponentsBuilder
+                .fromCurrentContextPath()
+                .path("/download/")
+                .path(fileStorage.getId().toString())
+                .toUriString();
         
         Map<String, Object> fileMapping = new HashMap<>();
         fileMapping.put("fileName", fileStorage.getFileName());
@@ -61,7 +65,10 @@ public class FileStorageController {
 
     @PostMapping("/uploads")
     public List<?> uploads(@RequestParam("files") MultipartFile[] files) {
-        return Arrays.asList(files).stream().map(file -> store(file)).collect(Collectors.toList());
+        return Arrays.asList(files)
+                .stream()
+                .map(file -> store(file))
+                .collect(Collectors.toList());
     }
 
 
