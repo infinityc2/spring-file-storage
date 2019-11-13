@@ -1,0 +1,12 @@
+spring:
+    servlet:
+        multipart:
+            max-file-size: 5MB
+            max-request-size: 5MB
+            enabled: true
+    h2:
+        console:
+            enabled: true
+            path: /h2-console
+server:
+    port: 9000
