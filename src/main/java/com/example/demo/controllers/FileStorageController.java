@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.example.demo.entities.FileStorage;
@@ -36,6 +37,11 @@ public class FileStorageController {
         return fileStorageService.findById(id);
     }
 
+    @GetMapping("files/name/{fileName}")
+    public Optional<FileStorage> getByName(@PathVariable String fileName) {
+        return fileStorageService.findByFileName(fileName);
+    }
+    
     @GetMapping("/download/{id}")
     public ResponseEntity<?> download(@PathVariable Long id) {
         return fileStorageService.download(id);

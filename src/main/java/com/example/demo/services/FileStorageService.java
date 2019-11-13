@@ -3,6 +3,7 @@ package com.example.demo.services;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Optional;
 
 import com.example.demo.entities.FileStorage;
 import com.example.demo.repositories.FileStorageRepository;
@@ -29,6 +30,10 @@ public class FileStorageService {
 
     public Collection<FileStorage> findAll() {
         return fileStorageRepository.findAll();
+    }
+
+    public Optional<FileStorage> findByFileName(String fileName) {
+        return fileStorageRepository.findByFileName(fileName);
     }
 
     public FileStorage store(MultipartFile file) {
